@@ -1,3 +1,15 @@
-nav, button {
-  font-family: 'Oswald', sans-serif;
+nav,
+button,
+#total-calories-text,
+.card-title {
+  font-family: "Oswald", sans-serif;
+}
+
+nav {
+  background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+  
+}
+
+.collection-item {
+  font-size: large;
 }

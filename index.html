@@ -13,18 +13,26 @@
       integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
       crossorigin="anonymous"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>Tracalorie</title>
   </head>
+
   <body>
     <nav>
-      <div class="nav-wrapper #4dd0e1 cyan lighten-2">
+      <div class="nav-wrapper">
         <div class="container">
           <a href="#" class="brand-logo center">Calories tracker App</a>
           <ul class="right">
             <li>
-              <a href="#" class="waves-effect waves-light clear-btn btn #ff7043 deep-orange lighten-1">Clear all</a>
+              <a
+                href="#"
+                class="waves-effect waves-light clear-btn btn #ff7043 deep-orange lighten-1"
+                >Clear all</a
+              >
             </li>
           </ul>
         </div>
@@ -40,46 +48,56 @@
           <form class="col">
             <div class="row">
               <div class="input-field col s6">
-                <input type="text" placeholder="Add Item" id="item-name" />
-                <label for="item-name">Meal</label>
+                <input type="text" placeholder="Add food" id="item-name" />
+                <label for="item-name">Add food</label>
               </div>
               <div class="input-field col s6">
                 <input
                   type="number"
-                  placeholder="Add Calories"
+                  placeholder="Add calories"
                   id="item-calories"
                 />
-                <label for="item-calories">Calories</label>
+                <label for="item-calories">Add calories</label>
               </div>
-              <button class="waves-effect waves-light add-btn btn #00acc1 cyan darken-2">
-                <i class="left fa fa-plus"></i>Add Meal
-              </button>
-              <button class="waves-effect waves-light update-btn btn #00897b teal darken-1"><i class="left fa fa-pencil-square-o"></i>Update Meal</button>
-              <button class="waves-effect waves-light delete-btn btn #fb8c00 orange darken-1"><i class="left fa fa-remove"></i>Delete Meal</button>
-              <button type="button"class="waves-effect waves-light back-btn btn grey pull-right">
-                <i class="left fa fa-chevron-circle-left"></i>Back
-              </button>
+
+              <!-- Buttons -->
+              <div class="row">
+                <div class="col s12">
+                  <button
+                    class="waves-effect waves-light add-btn btn #8bc34a light-green darken-2"
+                  >
+                    <i class="left fa fa-plus"></i>Add Meal
+                  </button>
+                  <button
+                    class="waves-effect waves-light update-btn btn #8bc34a light-green darken-2"
+                  >
+                    <i class="left fa fa-pencil-square-o"></i>Update Meal
+                  </button>
+                  <button
+                    class="waves-effect waves-light delete-btn btn #ffab91 deep-orange"
+                  >
+                    <i class="left fa fa-remove"></i>Delete Meal
+                  </button>
+                  <button
+                    type="button"
+                    class="waves-effect waves-light back-btn btn grey pull-right"
+                  >
+                    <i class="left fa fa-chevron-circle-left"></i>Back
+                  </button>
+                </div>
+              </div>
+              <!-- Buttons end here -->
+              
             </div>
           </form>
         </div>
       </div>
-      <h3 class="center-align">
+      <h3 id="total-calories-text" class="center-align">
         Total Calories: <span class="total-calories">0</span>
       </h3>
 
       <ul id="item-list" class="collection">
-        <!-- <li class="collection-item" id="item-0">
-          <strong>Steak Dinner: </strong> <em>1200 Calories</em>
-          <a href="#" class="secondary-content"><i class="edit-item fa fa-pencil"></i></a>
-        </li>
-        <li class="collection-item" id="item-0">
-          <strong>Cookie: </strong> <em>1200 Calories</em>
-          <a href="#" class="secondary-content"><i class="fa fa-pencil"></i></a>
-        </li>
-        <li class="collection-item" id="item-0">
-          <strong>Eggs: </strong> <em>1200 Calories</em>
-          <a href="#" class="secondary-content"><i class="fa fa-pencil"></i></a>
-        </li> -->
+        <!-- Food list goes here -->
       </ul>
     </div>
 
