@@ -100,6 +100,7 @@ function logData() {
 }
 
 export default {
+  data,
   getItems,
   addItem,
   getItemById,

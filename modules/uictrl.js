@@ -14,6 +14,10 @@ const UISelectors = {
   totalCalories: ".total-calories",
 };
 
+function changeTextContent(selector, text) {
+  document.querySelector(selector).textContent = text;
+}
+
 function populateItemList(items) {
   let html = "";
   items.forEach(function (item) {
@@ -74,12 +78,9 @@ function clearInput() {
 }
 
 function addItemToForm() {
-  document.querySelector(
-    UISelectors.itemNameInput
-  ).value = ItemCtrl.getCurrentItem().name;
-  document.querySelector(
-    UISelectors.itemCaloriesInput
-  ).value = ItemCtrl.getCurrentItem().calories;
+  document.querySelector(UISelectors.itemNameInput).value = ItemCtrl.getCurrentItem().name;
+  document.querySelector(UISelectors.itemCaloriesInput).value = ItemCtrl.getCurrentItem().calories;
+
   showEditState();
 }
 
@@ -97,7 +98,12 @@ function hideList() {
 }
 
 function showTotalCalories(totalCalories) {
-  document.querySelector(UISelectors.totalCalories).textContent = totalCalories;
+if (localStorage.getItem('language') === 'ru') {
+  changeTextContent("#total-calories-text", `Всего калорий: ${totalCalories}`);
+} else if (localStorage.getItem('language') === 'eng') {
+  changeTextContent("#total-calories-text", `Total Calories: ${totalCalories}`);
+}
+  // document.querySelector(UISelectors.totalCalories).textContent = totalCalories;
 }
 
 function clearEditState() {
@@ -133,4 +139,5 @@ export default {
   clearEditState,
   showEditState,
   getSelectors,
+  changeTextContent
 };

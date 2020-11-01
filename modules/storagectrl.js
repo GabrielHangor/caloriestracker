@@ -1,3 +1,5 @@
+
+
 // Storage module
 
 function storeItem(newItem) {
@@ -17,6 +19,9 @@ function storeItem(newItem) {
     localStorage.setItem("items", JSON.stringify(items));
   }
 }
+
+
+
 
 function getItemsFromStorage() {
   let items;
