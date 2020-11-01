@@ -8,9 +8,9 @@ import UICtrl from "./modules/uictrl.js";
 const loadEventListeners = function () {
   const UISelectors = UICtrl.getSelectors();
 
-  document.querySelector("#ru").addEventListener("click", toRussian);
+  document.querySelector("#ru").addEventListener("click", toRussianClick);
 
-  document.querySelector("#eng").addEventListener("click", toEnglish);
+  document.querySelector("#eng").addEventListener("click", toEnglishClick);
 
   document
     .querySelector(UISelectors.addBtn)
@@ -45,15 +45,14 @@ const loadEventListeners = function () {
 };
 
 const checkLang = function () {
-  if (localStorage.getItem("language") === "ru") {
+  if (JSON.parse(localStorage.getItem("language")) === "ru") {
     toRussian();
-  } else if (localStorage.getItem("language") === "eng") {
+  } else {
     toEnglish();
   }
 };
 
-// switch to russian lang
-const toRussian = function (e) {
+const toRussian = function () {
   UICtrl.changeTextContent(".brand-logo", "Счетчик калорий");
   UICtrl.changeTextContent("#clear-all-button", "Очистить все");
   UICtrl.changeTextContent(".card-title", "Добавить блюдо и калорийность");
@@ -65,17 +64,13 @@ const toRussian = function (e) {
   UICtrl.changeTextContent("#update-button", "Обновить");
   UICtrl.changeTextContent("#delete-button", "Удалить");
   UICtrl.changeTextContent("#back-button", "Назад");
-  UICtrl.changeTextContent("#total-calories-text",`Всего калорий: ${ItemCtrl.data.totalCalories}`
+  UICtrl.changeTextContent(
+    "#total-calories-text",
+    `Всего калорий: ${ItemCtrl.data.totalCalories}`
   );
-
-  localStorage.setItem("language", JSON.stringify("ru"));
-
-
-  e.preventDefault();
 };
 
-// switch to english lang
-const toEnglish = function (e) {
+const toEnglish = function () {
   UICtrl.changeTextContent(".brand-logo", "Calories tracker App");
   UICtrl.changeTextContent("#clear-all-button", "CLEAR ALL");
   UICtrl.changeTextContent(".card-title", "Add Meal & Calories");
@@ -89,8 +84,49 @@ const toEnglish = function (e) {
   UICtrl.changeTextContent("#back-button", "BACK");
   UICtrl.changeTextContent(
     "#total-calories-text",
-    `Total Calories: 
-  ${ItemCtrl.data.totalCalories}`
+    `Total Calories: ${ItemCtrl.data.totalCalories}`
+  );
+};
+
+// switch to russian lang
+const toRussianClick = function (e) {
+  UICtrl.changeTextContent(".brand-logo", "Счетчик калорий");
+  UICtrl.changeTextContent("#clear-all-button", "Очистить все");
+  UICtrl.changeTextContent(".card-title", "Добавить блюдо и калорийность");
+  document.querySelector("#item-name").placeholder = "Добавить блюдо";
+  document.querySelector("#item-calories").placeholder = "Добавить калории";
+  UICtrl.changeTextContent("#food-label", "Блюдо");
+  UICtrl.changeTextContent("#calories-label", "Калорийность");
+  UICtrl.changeTextContent("#add-button", "Добавить");
+  UICtrl.changeTextContent("#update-button", "Обновить");
+  UICtrl.changeTextContent("#delete-button", "Удалить");
+  UICtrl.changeTextContent("#back-button", "Назад");
+  UICtrl.changeTextContent(
+    "#total-calories-text",
+    `Всего калорий: ${ItemCtrl.data.totalCalories}`
+  );
+
+  localStorage.setItem("language", JSON.stringify("ru"));
+
+  e.preventDefault();
+};
+
+// switch to english lang
+const toEnglishClick = function (e) {
+  UICtrl.changeTextContent(".brand-logo", "Calories tracker App");
+  UICtrl.changeTextContent("#clear-all-button", "CLEAR ALL");
+  UICtrl.changeTextContent(".card-title", "Add Meal & Calories");
+  document.querySelector("#item-name").placeholder = "Add food";
+  document.querySelector("#item-calories").placeholder = "Add calories";
+  UICtrl.changeTextContent("#food-label", "Food");
+  UICtrl.changeTextContent("#calories-label", "Calories");
+  UICtrl.changeTextContent("#add-button", "ADD MEAL");
+  UICtrl.changeTextContent("#update-button", "UPDATE MEAL");
+  UICtrl.changeTextContent("#delete-button", "DELETE MEAL");
+  UICtrl.changeTextContent("#back-button", "BACK");
+  UICtrl.changeTextContent(
+    "#total-calories-text",
+    `Total Calories: ${ItemCtrl.data.totalCalories}`
   );
 
   localStorage.setItem("language", JSON.stringify("eng"));
@@ -115,8 +151,6 @@ const itemAddSubmit = function (e) {
     UICtrl.showTotalCalories(totalCalories);
 
     StorageCtrl.storeItem(newItem);
-
-    checkLang();
 
     UICtrl.clearInput();
   }
@@ -145,8 +179,6 @@ const itemUpdateSubmit = function (e) {
 
   UICtrl.updateListItem(updatedItem);
 
-  checkLang();
-
   const totalCalories = ItemCtrl.getTotalCalories();
   UICtrl.showTotalCalories(totalCalories);
 
@@ -160,8 +192,6 @@ const itemDeleteSubmit = function (e) {
   const currentItem = ItemCtrl.getCurrentItem();
   ItemCtrl.deleteItem(currentItem.id);
   UICtrl.deleteListItem(currentItem.id);
-
-  checkLang();
 
   const totalCalories = ItemCtrl.getTotalCalories();
   UICtrl.showTotalCalories(totalCalories);
@@ -180,8 +210,6 @@ const itemDeleteSubmit = function (e) {
 
 const clearAllItemsClick = function (e) {
   ItemCtrl.clearAllItems();
-
-  checkLang();
 
   const totalCalories = ItemCtrl.getTotalCalories();
   UICtrl.showTotalCalories(totalCalories);

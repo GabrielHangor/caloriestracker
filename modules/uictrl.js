@@ -98,9 +98,9 @@ function hideList() {
 }
 
 function showTotalCalories(totalCalories) {
-if (localStorage.getItem('language') === 'ru') {
+if (JSON.parse(localStorage.getItem('language')) === 'ru') {
   changeTextContent("#total-calories-text", `Всего калорий: ${totalCalories}`);
-} else if (localStorage.getItem('language') === 'eng') {
+} else  {
   changeTextContent("#total-calories-text", `Total Calories: ${totalCalories}`);
 }
   // document.querySelector(UISelectors.totalCalories).textContent = totalCalories;
