@@ -133,7 +133,7 @@ const itemAddSubmit = function (e) {
   const input = UICtrl.getItemInput();
 
 
-  if (input.name !== "" && input.calories !== "") {
+  if (input.name !== "" && input.calories !== "" && input.specifiedDate !== "") {
     const newItem = ItemCtrl.addItem(input.name, input.calories, input.specifiedDate);
 
     UICtrl.addListItem(newItem);
@@ -166,7 +166,7 @@ const itemEditClick = function (e) {
 
 const itemUpdateSubmit = function (e) {
   const input = UICtrl.getItemInput();
-  const updatedItem = ItemCtrl.updateItem(input.name, input.calories);
+  const updatedItem = ItemCtrl.updateItem(input.name, input.calories, input.specifiedDate);
 
   UICtrl.updateListItem(updatedItem);
 

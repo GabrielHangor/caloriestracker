@@ -23,9 +23,9 @@ function populateItemList(items) {
   let html = "";
   items.forEach(function (item) {
     html += `<li class="collection-item" id="item-${item.id}">
-        <strong>${item.name}: </strong> <em>${item.calories} Calories</em>
-        <a href="#" class="secondary-content"><i class="small edit-item fa fa-pencil"></i></a>
-        </li>`;
+    <strong>${item.name}: </strong> <em>${item.calories} Calories</em>, 
+    <b>${item.specifiedDate}</b>
+        <a href="#" class="secondary-content"><i class="small edit-item fa fa-pencil"></i></a>`;
   });
   document.querySelector(UISelectors.itemList).innerHTML = html;
 }
@@ -44,12 +44,11 @@ function addListItem(item) {
   const li = document.createElement("li");
   li.className = "collection-item";
   li.id = `item-${item.id}`;
-  li.innerHTML = `<strong>${item.name}: </strong> <em>${item.calories} Calories</em>
+  li.innerHTML = `<strong>${item.name}: </strong> <em>${item.calories} Calories</em>, 
+  <b>${item.specifiedDate}</b>
       <a href="#" class="secondary-content"><i class="small edit-item fa fa-pencil"></i></a>`;
 
-  document
-    .querySelector(UISelectors.itemList)
-    .insertAdjacentElement("beforeend", li);
+  document.querySelector(UISelectors.itemList).insertAdjacentElement("beforeend", li);
 }
 
 function updateListItem(updatedItem) {
@@ -60,9 +59,9 @@ function updateListItem(updatedItem) {
     const itemID = listItem.getAttribute("id");
 
     if (itemID === `item-${updatedItem.id}`) {
-      document.querySelector(
-        `#${itemID}`
-      ).innerHTML = `<strong>${updatedItem.name}: </strong> <em>${updatedItem.calories} Calories</em>
+      document.querySelector(`#${itemID}`).innerHTML = 
+      `<strong>${updatedItem.name}: </strong> <em>${updatedItem.calories} Calories</em>, 
+      <b>${updatedItem.specifiedDate}</b>
           <a href="#" class="secondary-content"><i class="small edit-item fa fa-pencil"></i></a>`;
     }
   });
@@ -77,15 +76,28 @@ function deleteListItem(currentItemId) {
 function clearInput() {
   document.querySelector(UISelectors.itemNameInput).value = "";
   document.querySelector(UISelectors.itemCaloriesInput).value = "";
+  document.querySelector(UISelectors.chosenDate).value = dateFormat();
+
+}
+
+function dateFormat() {
+  let d = new Date(),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+  if (month.length < 2) 
+      month = '0' + month;
+  if (day.length < 2) 
+      day = '0' + day;
+
+  return [year, month, day].join('-');
 }
 
 function addItemToForm() {
-  document.querySelector(
-    UISelectors.itemNameInput
-  ).value = ItemCtrl.getCurrentItem().name;
-  document.querySelector(
-    UISelectors.itemCaloriesInput
-  ).value = ItemCtrl.getCurrentItem().calories;
+  document.querySelector(UISelectors.itemNameInput).value = ItemCtrl.getCurrentItem().name;
+  document.querySelector(UISelectors.itemCaloriesInput).value = ItemCtrl.getCurrentItem().calories;
+  document.querySelector(UISelectors.chosenDate).value = ItemCtrl.getCurrentItem().specifiedDate;
 
   showEditState();
 }
@@ -115,7 +127,7 @@ function showTotalCalories(totalCalories) {
       `Total Calories: ${totalCalories}`
     );
   }
-  // document.querySelector(UISelectors.totalCalories).textContent = totalCalories;
+
 }
 
 function clearEditState() {
@@ -138,6 +150,7 @@ function getSelectors() {
 }
 
 export default {
+  dateFormat,
   populateItemList,
   getItemInput,
   addListItem,

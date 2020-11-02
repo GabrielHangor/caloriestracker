@@ -34,7 +34,7 @@ function addItem(name, calories, specifiedDate) {
 
   calories = parseInt(calories);
   const newItem = new Item(ID, name, calories, specifiedDate);
-  console.log(newItem);
+
   data.items.push(newItem);
   return newItem;
 }
@@ -50,7 +50,7 @@ function getItemById(ID) {
   return found;
 }
 
-function updateItem(name, calories) {
+function updateItem(name, calories, specifiedDate) {
   calories = parseInt(calories);
 
   let found = null;
@@ -59,6 +59,7 @@ function updateItem(name, calories) {
     if (item.id === data.currentItem.id) {
       item.name = name;
       item.calories = calories;
+      item.specifiedDate = specifiedDate;
       found = item;
     }
   });
