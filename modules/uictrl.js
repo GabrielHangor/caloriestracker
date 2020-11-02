@@ -12,6 +12,7 @@ const UISelectors = {
   itemNameInput: "#item-name",
   itemCaloriesInput: "#item-calories",
   totalCalories: ".total-calories",
+  chosenDate: "#item-date",
 };
 
 function changeTextContent(selector, text) {
@@ -33,6 +34,7 @@ function getItemInput() {
   return {
     name: document.querySelector(UISelectors.itemNameInput).value,
     calories: document.querySelector(UISelectors.itemCaloriesInput).value,
+    specifiedDate: document.querySelector(UISelectors.chosenDate).value,
   };
 }
 
@@ -78,8 +80,12 @@ function clearInput() {
 }
 
 function addItemToForm() {
-  document.querySelector(UISelectors.itemNameInput).value = ItemCtrl.getCurrentItem().name;
-  document.querySelector(UISelectors.itemCaloriesInput).value = ItemCtrl.getCurrentItem().calories;
+  document.querySelector(
+    UISelectors.itemNameInput
+  ).value = ItemCtrl.getCurrentItem().name;
+  document.querySelector(
+    UISelectors.itemCaloriesInput
+  ).value = ItemCtrl.getCurrentItem().calories;
 
   showEditState();
 }
@@ -98,11 +104,17 @@ function hideList() {
 }
 
 function showTotalCalories(totalCalories) {
-if (JSON.parse(localStorage.getItem('language')) === 'ru') {
-  changeTextContent("#total-calories-text", `Всего калорий: ${totalCalories}`);
-} else  {
-  changeTextContent("#total-calories-text", `Total Calories: ${totalCalories}`);
-}
+  if (JSON.parse(localStorage.getItem("language")) === "ru") {
+    changeTextContent(
+      "#total-calories-text",
+      `Всего калорий: ${totalCalories}`
+    );
+  } else {
+    changeTextContent(
+      "#total-calories-text",
+      `Total Calories: ${totalCalories}`
+    );
+  }
   // document.querySelector(UISelectors.totalCalories).textContent = totalCalories;
 }
 
@@ -139,5 +151,5 @@ export default {
   clearEditState,
   showEditState,
   getSelectors,
-  changeTextContent
+  changeTextContent,
 };

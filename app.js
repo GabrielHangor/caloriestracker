@@ -13,9 +13,7 @@ const loadEventListeners = function () {
 
   document.querySelector("#eng").addEventListener("click", toEnglishClick);
 
-  document
-    .querySelector(UISelectors.addBtn)
-    .addEventListener("click", itemAddSubmit);
+  document.querySelector(UISelectors.addBtn).addEventListener("click", itemAddSubmit);
 
   document.addEventListener("keypress", function (e) {
     if (e.key === "Enter") {
@@ -24,25 +22,15 @@ const loadEventListeners = function () {
     }
   });
 
-  document
-    .querySelector(UISelectors.itemList)
-    .addEventListener("click", itemEditClick);
+  document.querySelector(UISelectors.itemList).addEventListener("click", itemEditClick);
 
-  document
-    .querySelector(UISelectors.updateBtn)
-    .addEventListener("click", itemUpdateSubmit);
+  document.querySelector(UISelectors.updateBtn).addEventListener("click", itemUpdateSubmit);
 
-  document
-    .querySelector(UISelectors.backBtn)
-    .addEventListener("click", backBtnClick);
+  document.querySelector(UISelectors.backBtn).addEventListener("click", backBtnClick);
 
-  document
-    .querySelector(UISelectors.deleteBtn)
-    .addEventListener("click", itemDeleteSubmit);
+  document.querySelector(UISelectors.deleteBtn).addEventListener("click", itemDeleteSubmit);
 
-  document
-    .querySelector(UISelectors.clearBtn)
-    .addEventListener("click", clearAllItemsClick);
+  document.querySelector(UISelectors.clearBtn).addEventListener("click", clearAllItemsClick);
 };
 
 const checkLang = function () {
@@ -144,8 +132,10 @@ const backBtnClick = function (e) {
 const itemAddSubmit = function (e) {
   const input = UICtrl.getItemInput();
 
+
   if (input.name !== "" && input.calories !== "") {
-    const newItem = ItemCtrl.addItem(input.name, input.calories);
+    const newItem = ItemCtrl.addItem(input.name, input.calories, input.specifiedDate);
+
     UICtrl.addListItem(newItem);
 
     const totalCalories = ItemCtrl.getTotalCalories();

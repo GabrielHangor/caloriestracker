@@ -3,10 +3,11 @@ import StorageCtrl from "./storagectrl.js";
 // Item module
 
 class Item {
-  constructor(id, name, calories) {
+  constructor(id, name, calories, specifiedDate) {
     this.id = id;
     this.name = name;
     this.calories = calories;
+    this.specifiedDate = specifiedDate;
   }
 }
 
@@ -21,7 +22,8 @@ function getItems() {
   return data.items;
 }
 
-function addItem(name, calories) {
+function addItem(name, calories, specifiedDate) {
+
   let ID;
 
   if (data.items.length > 0) {
@@ -31,7 +33,8 @@ function addItem(name, calories) {
   }
 
   calories = parseInt(calories);
-  const newItem = new Item(ID, name, calories);
+  const newItem = new Item(ID, name, calories, specifiedDate);
+  console.log(newItem);
   data.items.push(newItem);
   return newItem;
 }
