@@ -19,8 +19,8 @@ function initChart(items) {
           backgroundColor: "rgba(54, 162, 235, 0.2",
           borderColor: "rgb(54, 162, 235, 1)",
           borderWidth: "2",
-          hoverBackgroundColor: "rgba(54, 162, 235, 0.5",
-          data: [],
+          hoverBackgroundColor: "rgba(54, 162, 235, 0.5)",
+          data: []
         },
       ],
     },
