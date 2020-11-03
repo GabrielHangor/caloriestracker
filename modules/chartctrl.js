@@ -16,8 +16,10 @@ function initChart(items) {
       datasets: [
         {
           label: "Calories",
-          backgroundColor: "rgb(0, 99, 132)",
-          borderColor: "rgb(0, 99, 132)",
+          backgroundColor: "rgba(54, 162, 235, 0.2",
+          borderColor: "rgb(54, 162, 235, 1)",
+          borderWidth: "2",
+          hoverBackgroundColor: "rgba(54, 162, 235, 0.5",
           data: [],
         },
       ],
