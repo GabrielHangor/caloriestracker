@@ -233,6 +233,8 @@ function init() {
   const totalCalories = ItemCtrl.getTotalCalories();
   UICtrl.showTotalCalories(totalCalories);
 
+  ChartCtrl.updateChart(ItemCtrl.getItems());
+
   loadEventListeners();
 }
 
