@@ -21,6 +21,7 @@ let chart = new Chart(ctx, {
 });
 
 function updateChart(items) {
+  // sort items in the array by date
   let itemsDateSorted = items.sort(function (a, b) {
     if (a.specifiedDate > b.specifiedDate) {
       return 1;
@@ -31,7 +32,20 @@ function updateChart(items) {
     return 0;
   });
 
-  itemsDateSorted.forEach(function (item) {
+  // sum calories for the same date in a new array
+  let itemsAllSorted = Object.values(
+    itemsDateSorted.reduce((r, o) => {
+      r[o.specifiedDate] = r[o.specifiedDate] || {
+        specifiedDate: o.specifiedDate,
+        calories: 0,
+      };
+      r[o.specifiedDate].calories += +o.calories;
+      return r;
+    }, {})
+  );
+
+  // insert data into the chart
+  itemsAllSorted.forEach(function (item) {
     chart.data.labels.push(item.specifiedDate);
     chart.data.datasets[0].data.push(item.calories);
   });

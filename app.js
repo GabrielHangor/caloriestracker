@@ -1,7 +1,7 @@
 import ItemCtrl from "./modules/itemctrl.js";
 import StorageCtrl from "./modules/storagectrl.js";
 import UICtrl from "./modules/uictrl.js";
-import ChartCtrl from "./modules/chartctrl.js"
+import ChartCtrl from "./modules/chartctrl.js";
 
 // Main module
 
@@ -13,7 +13,9 @@ const loadEventListeners = function () {
 
   document.querySelector("#eng").addEventListener("click", toEnglishClick);
 
-  document.querySelector(UISelectors.addBtn).addEventListener("click", itemAddSubmit);
+  document
+    .querySelector(UISelectors.addBtn)
+    .addEventListener("click", itemAddSubmit);
 
   document.addEventListener("keypress", function (e) {
     if (e.key === "Enter") {
@@ -22,15 +24,25 @@ const loadEventListeners = function () {
     }
   });
 
-  document.querySelector(UISelectors.itemList).addEventListener("click", itemEditClick);
+  document
+    .querySelector(UISelectors.itemList)
+    .addEventListener("click", itemEditClick);
 
-  document.querySelector(UISelectors.updateBtn).addEventListener("click", itemUpdateSubmit);
+  document
+    .querySelector(UISelectors.updateBtn)
+    .addEventListener("click", itemUpdateSubmit);
 
-  document.querySelector(UISelectors.backBtn).addEventListener("click", backBtnClick);
+  document
+    .querySelector(UISelectors.backBtn)
+    .addEventListener("click", backBtnClick);
 
-  document.querySelector(UISelectors.deleteBtn).addEventListener("click", itemDeleteSubmit);
+  document
+    .querySelector(UISelectors.deleteBtn)
+    .addEventListener("click", itemDeleteSubmit);
 
-  document.querySelector(UISelectors.clearBtn).addEventListener("click", clearAllItemsClick);
+  document
+    .querySelector(UISelectors.clearBtn)
+    .addEventListener("click", clearAllItemsClick);
 };
 
 const checkLang = function () {
@@ -132,9 +144,16 @@ const backBtnClick = function (e) {
 const itemAddSubmit = function (e) {
   const input = UICtrl.getItemInput();
 
-
-  if (input.name !== "" && input.calories !== "" && input.specifiedDate !== "") {
-    const newItem = ItemCtrl.addItem(input.name, input.calories, input.specifiedDate);
+  if (
+    input.name !== "" &&
+    input.calories !== "" &&
+    input.specifiedDate !== ""
+  ) {
+    const newItem = ItemCtrl.addItem(
+      input.name,
+      input.calories,
+      input.specifiedDate
+    );
 
     UICtrl.addListItem(newItem);
 
@@ -143,8 +162,12 @@ const itemAddSubmit = function (e) {
 
     StorageCtrl.storeItem(newItem);
 
+    
+
     UICtrl.clearInput();
   }
+
+  ChartCtrl.updateChart(ItemCtrl.getItems());
 
   e.preventDefault();
 };
@@ -166,7 +189,11 @@ const itemEditClick = function (e) {
 
 const itemUpdateSubmit = function (e) {
   const input = UICtrl.getItemInput();
-  const updatedItem = ItemCtrl.updateItem(input.name, input.calories, input.specifiedDate);
+  const updatedItem = ItemCtrl.updateItem(
+    input.name,
+    input.calories,
+    input.specifiedDate
+  );
 
   UICtrl.updateListItem(updatedItem);
 
@@ -174,6 +201,8 @@ const itemUpdateSubmit = function (e) {
   UICtrl.showTotalCalories(totalCalories);
 
   StorageCtrl.updateItemStorage(updatedItem);
+
+  ChartCtrl.updateChart(ItemCtrl.getItems());
 
   UICtrl.clearEditState();
   e.preventDefault();
@@ -196,6 +225,8 @@ const itemDeleteSubmit = function (e) {
     UICtrl.hideList();
   }
 
+  ChartCtrl.updateChart(ItemCtrl.getItems());
+
   e.preventDefault();
 };
 
@@ -211,11 +242,10 @@ const clearAllItemsClick = function (e) {
 
   UICtrl.hideList();
 
+  ChartCtrl.updateChart(ItemCtrl.getItems());
+
   e.preventDefault();
 };
-
-
-
 
 function init() {
   UICtrl.clearEditState();
