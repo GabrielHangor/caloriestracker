@@ -162,12 +162,14 @@ const itemAddSubmit = function (e) {
 
     StorageCtrl.storeItem(newItem);
 
+    ChartCtrl.initChart(StorageCtrl.getItemsFromStorage());
+
     
 
     UICtrl.clearInput();
   }
 
-  ChartCtrl.updateChart(ItemCtrl.getItems());
+
 
   e.preventDefault();
 };
@@ -202,7 +204,9 @@ const itemUpdateSubmit = function (e) {
 
   StorageCtrl.updateItemStorage(updatedItem);
 
-  ChartCtrl.updateChart(ItemCtrl.getItems());
+  ChartCtrl.initChart(StorageCtrl.getItemsFromStorage());
+
+
 
   UICtrl.clearEditState();
   e.preventDefault();
@@ -225,7 +229,7 @@ const itemDeleteSubmit = function (e) {
     UICtrl.hideList();
   }
 
-  ChartCtrl.updateChart(ItemCtrl.getItems());
+  ChartCtrl.initChart(StorageCtrl.getItemsFromStorage());
 
   e.preventDefault();
 };
@@ -242,7 +246,7 @@ const clearAllItemsClick = function (e) {
 
   UICtrl.hideList();
 
-  ChartCtrl.updateChart(ItemCtrl.getItems());
+  ChartCtrl.initChart(StorageCtrl.getItemsFromStorage());
 
   e.preventDefault();
 };
@@ -263,7 +267,7 @@ function init() {
   const totalCalories = ItemCtrl.getTotalCalories();
   UICtrl.showTotalCalories(totalCalories);
 
-  ChartCtrl.updateChart(ItemCtrl.getItems());
+  ChartCtrl.initChart(StorageCtrl.getItemsFromStorage());
 
   loadEventListeners();
 }

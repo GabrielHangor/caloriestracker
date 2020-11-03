@@ -1,26 +1,32 @@
-let ctx = document.getElementById("myChart").getContext("2d");
-let chart = new Chart(ctx, {
-  // The type of chart we want to create
-  type: "bar",
+let chart = null;
 
-  // The data for our dataset
-  data: {
-    labels: [],
-    datasets: [
-      {
-        label: "Calories",
-        backgroundColor: "rgb(0, 99, 132)",
-        borderColor: "rgb(0, 99, 132)",
-        data: [],
-      },
-    ],
-  },
+function initChart(items) {
+  if (chart != null) {
+    chart.destroy();
+  }
 
-  // Configuration options go here
-  options: {},
-});
+  let ctx = document.getElementById("myChart").getContext("2d");
+  chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: "bar",
 
-function updateChart(items) {
+    // The data for our dataset
+    data: {
+      labels: [],
+      datasets: [
+        {
+          label: "Calories",
+          backgroundColor: "rgb(0, 99, 132)",
+          borderColor: "rgb(0, 99, 132)",
+          data: [],
+        },
+      ],
+    },
+
+    // Configuration options go here
+    options: {},
+  });
+
   // sort items in the array by date
   let itemsDateSorted = items.sort(function (a, b) {
     if (a.specifiedDate > b.specifiedDate) {
@@ -45,6 +51,7 @@ function updateChart(items) {
   );
 
   // insert data into the chart
+
   itemsAllSorted.forEach(function (item) {
     chart.data.labels.push(item.specifiedDate);
     chart.data.datasets[0].data.push(item.calories);
@@ -54,7 +61,5 @@ function updateChart(items) {
 }
 
 export default {
-  updateChart,
-  ctx,
-  chart,
+  initChart,
 };
