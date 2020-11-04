@@ -13,3 +13,7 @@ nav {
 .collection-item {
   font-size: large;
 }
+
+#class-container {
+  position: relative;
+}

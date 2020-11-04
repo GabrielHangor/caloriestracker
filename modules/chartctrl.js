@@ -1,5 +1,5 @@
 let chart = null;
-Chart.defaults.global.defaultFontFamily = "Comic Sans MS, cursive, sans-serif"
+Chart.defaults.global.defaultFontFamily = "Comic Sans MS, cursive, sans-serif";
 
 function initChart(items) {
   if (chart != null) {
@@ -21,6 +21,7 @@ function initChart(items) {
           borderColor: "rgba(54, 162, 235, 1)",
           borderWidth: "2",
           hoverBackgroundColor: "rgba(54, 162, 235, 0.5)",
+
           data: [],
         },
       ],
@@ -28,6 +29,8 @@ function initChart(items) {
 
     // Configuration options go here
     options: {
+      responsive: true,
+
       scales: {
         yAxes: [
           {
