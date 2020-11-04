@@ -2,7 +2,7 @@ nav,
 button,
 #total-calories-text,
 .card-title {
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: "Oswald", sans-serif;
 }
 
 nav {
@@ -11,7 +11,7 @@ nav {
 }
 
 .collection-item {
-  font-size: large;
+  font-size: medium;
 }
 
 #class-container {

@@ -39,6 +39,12 @@ function initChart(items) {
             },
           },
         ],
+
+        xAxes: [
+          {
+            maxBarThickness: 70,
+          },
+        ],
       },
       legend: {
         display: false,

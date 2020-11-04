@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <title>Tracalorie</title>
+  <title>Calories tracker</title>
 </head>
 
 <body>
@@ -27,19 +27,20 @@
         </li>
       </ul>
       <div class="container">
-        <a href="#" class="brand-logo center">Calories tracker App</a>
+        <a href="#" class="hide-on-small-only brand-logo center">Calories tracker App</a>
       </div>
       <ul class="right">
         <li>
-          <a id="clear-all-button" href="#" class="waves-effect waves-light clear-btn btn #ff7043 deep-orange lighten-1">Clear all</a>
+          <a id="clear-all-button" href="#" class="waves-effect waves-light clear-btn btn-small #ff7043 deep-orange lighten-1">Clear all</a>
         </li>
       </ul>
     </div>
   </nav>
 
   <br />
-<!-- main container begins -->
+  <!-- main container begins -->
   <div class="container">
+    <div class="container">
     <div class="card">
       <div class="card-content">
         <span class="card-title">Add Meal & Calories</span>
@@ -53,7 +54,7 @@
               <input type="number" placeholder="Add calories" id="item-calories" />
               <label id="calories-label" for="item-calories">Calories</label>
             </div>
-            <div class="input-field col s6">
+            <div class="input-field col s12">
               <input type="date" placeholder="Date" id="item-date" />
               <label id="date-label" for="item-date">Date</label>
             </div>
@@ -61,19 +62,19 @@
             <!-- Buttons -->
             <div class="row">
               <div class="col s12">
-                <button class="waves-effect waves-light add-btn btn #8bc34a light-green darken-2">
+                <button class="waves-effect waves-light add-btn btn-small #8bc34a light-green darken-2">
                   <span id="add-button">Add Meal</span>
                   <i class="left fa fa-plus"></i>
                 </button>
-                <button class="waves-effect waves-light update-btn btn #8bc34a light-green darken-2">
+                <button class="waves-effect waves-light update-btn btn-small #8bc34a light-green darken-2">
                   <span id="update-button">Update Meal</span>
                   <i class="left fa fa-pencil-square-o"></i>
                 </button>
-                <button class="waves-effect waves-light delete-btn btn #ffab91 deep-orange">
+                <button class="waves-effect waves-light delete-btn btn-small #ffab91 deep-orange">
                   <span id="delete-button">Delete Meal</span>
                   <i class="left fa fa-remove"></i>
                 </button>
-                <button type="button" class="waves-effect waves-light back-btn btn grey pull-right">
+                <button type="button" class="waves-effect waves-light back-btn btn-small grey pull-right">
                   <span id="back-button">Back</span>
                   <i class="left fa fa-chevron-circle-left"></i>
                 </button>
@@ -84,16 +85,16 @@
         </form>
       </div>
     </div>
-    <h3 id="total-calories-text" class="center-align">
+    <h4 id="total-calories-text" class="center-align">
       Total Calories: <span class="total-calories">0</span>
-    </h3>
+    </h4>
 
     <ul id="item-list" class="collection">
       <!-- Food list goes here -->
     </ul>
-
-<!-- chart container -->
-    <div  id="class-container" class="container">
+  </div>
+    <!-- chart container -->
+    <div id="class-container" class="container">
       <canvas id="myChart"></canvas>
     </div>
 
