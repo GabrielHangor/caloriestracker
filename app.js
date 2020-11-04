@@ -145,9 +145,7 @@ const itemAddSubmit = function (e) {
   const input = UICtrl.getItemInput();
 
   if (
-    input.name !== "" &&
-    input.calories !== "" &&
-    input.specifiedDate !== ""
+    input.name !== "" && input.calories !== "" && input.specifiedDate !== ""
   ) {
     const newItem = ItemCtrl.addItem(
       input.name,
@@ -163,8 +161,6 @@ const itemAddSubmit = function (e) {
     StorageCtrl.storeItem(newItem);
 
     ChartCtrl.initChart(StorageCtrl.getItemsFromStorage());
-
-    
 
     UICtrl.clearInput();
   }

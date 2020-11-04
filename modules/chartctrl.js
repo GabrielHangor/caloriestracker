@@ -1,4 +1,5 @@
 let chart = null;
+Chart.defaults.global.defaultFontFamily = "Comic Sans MS, cursive, sans-serif"
 
 function initChart(items) {
   if (chart != null) {
@@ -17,16 +18,36 @@ function initChart(items) {
         {
           label: "Calories",
           backgroundColor: "rgba(54, 162, 235, 0.2",
-          borderColor: "rgb(54, 162, 235, 1)",
+          borderColor: "rgba(54, 162, 235, 1)",
           borderWidth: "2",
           hoverBackgroundColor: "rgba(54, 162, 235, 0.5)",
-          data: []
+          data: [],
         },
       ],
     },
 
     // Configuration options go here
-    options: {},
+    options: {
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              beginAtZero: true,
+            },
+          },
+        ],
+      },
+      legend: {
+        display: false,
+      },
+      title: {
+        display: true,
+        text: "Calories chart",
+        fontColor: "#333",
+        fontSize: 20,
+        padding: 20,
+      },
+    },
   });
 
   // sort items in the array by date
